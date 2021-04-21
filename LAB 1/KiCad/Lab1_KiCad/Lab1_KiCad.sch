@@ -229,10 +229,6 @@ Wire Wire Line
 	5200 4050 6300 4050
 Wire Wire Line
 	6300 4150 5200 4150
-Wire Wire Line
-	6000 3250 6300 3250
-Text Notes 5700 3300 0    50   ~ 0
-LCD_RS
 $Comp
 L power:GND #PWR?
 U 1 1 608220D9
@@ -244,10 +240,6 @@ F 3 "" H 6300 3150 50  0001 C CNN
 	1    6300 3150
 	0    1    1    0   
 $EndComp
-Wire Wire Line
-	6300 2950 6000 2950
-Text Notes 5650 2950 0    50   ~ 0
-LCD_E
 $Comp
 L Device:C C5
 U 1 1 6082858B
@@ -302,15 +294,7 @@ F 3 "http://www.icbank.com/data/ICBShop/board/HY1602E.pdf" H 6900 3650 50  0001 
 	1    0    0    -1  
 $EndComp
 Wire Notes Line
-	7100 3000 7500 3000
-Wire Notes Line
-	7500 3000 7500 2900
-Wire Notes Line
-	7500 2900 7100 2900
-Wire Notes Line
 	7100 2900 7100 3000
-Text Notes 7100 3000 0    35   ~ 0
-Potentiometer
 $Comp
 L power:GND #PWR?
 U 1 1 608300A8
@@ -322,4 +306,45 @@ F 3 "" H 6700 4350 50  0001 C CNN
 	1    6700 4350
 	1    0    0    -1  
 $EndComp
+$Comp
+L Device:R_POT 10k
+U 1 1 60831499
+P 7450 2950
+F 0 "10k" H 7380 2904 50  0000 R CNN
+F 1 "R_POT" H 7380 2995 50  0000 R CNN
+F 2 "" H 7450 2950 50  0001 C CNN
+F 3 "~" H 7450 2950 50  0001 C CNN
+	1    7450 2950
+	-1   0    0    1   
+$EndComp
+NoConn ~ 7100 3550
+NoConn ~ 7100 3650
+Wire Wire Line
+	7100 2950 7300 2950
+Wire Wire Line
+	7450 2800 7450 2550
+Wire Wire Line
+	7450 2550 6700 2550
+Wire Wire Line
+	7450 3100 7450 4350
+Wire Wire Line
+	7450 4350 6700 4350
+Connection ~ 6700 4350
+Wire Wire Line
+	5200 4450 5850 4450
+Wire Wire Line
+	5850 2950 6300 2950
+Wire Wire Line
+	5850 2950 5850 4450
+Wire Wire Line
+	5200 4350 5700 4350
+Wire Wire Line
+	5700 4350 5700 3250
+Wire Wire Line
+	5700 3250 6300 3250
+NoConn ~ 5200 4950
+NoConn ~ 5200 4850
+NoConn ~ 5200 4750
+NoConn ~ 5200 4650
+NoConn ~ 5200 4550
 $EndSCHEMATC
