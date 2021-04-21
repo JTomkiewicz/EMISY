@@ -1,11 +1,14 @@
+;EMISY LABORATORY 1 TASK 1 Interfacing display and MCU using 8 bit
+
 ;labels definitions
 LCD_RS EQU P3.0 ;RS pin
 LCD_E EQU P3.1 ;E pin
 LCD_BUS EQU P1 ;DB pins from P1.0 to P1.7
 
+;send 0 to LCD_RS
 clr LCD_RS
 
-;initialization
+;BEGIN initialization
 lcall delay_ms
 
 mov LCD_BUS, #00111000B ;function set
@@ -19,7 +22,8 @@ lcall send_command
 lcall delay_ms
 mov LCD_BUS, #00000110B ;entry mode set
 
-;initialization END, now send J to LCD
+;END initialization
+;my name is Jakub so send J to LCD
 mov LCD_BUS, #'J'
 lcall send_data
 lcall delay_ms

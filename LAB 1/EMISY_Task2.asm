@@ -1,11 +1,29 @@
+;EMISY LABORATORY 1 TASK 2 Writing students name & index using 8 bit
+
+;put data in RAM
+mov 30H, #'3'
+mov 31H, #'0'
+mov 32H, #'0'
+mov 33H, #'1'
+mov 34H, #'8'
+mov 35H, #'3'
+mov 36H, #0 ;end of first line
+mov 37H, #'J'
+mov 38H, #'A'
+mov 39H, #'K'
+mov 3AH, #'U'
+mov 3BH, #'B'
+mov 3CH, #0 ;end of line
+
 ;labels definitions
 LCD_RS EQU P3.0 ;RS pin
 LCD_E EQU P3.1 ;E pin
 LCD_BUS EQU P1 ;DB pins from P1.0 to P1.7
 
+;send 0 to LCD_RS
 clr LCD_RS
 
-;initialization
+;BEGIN initialization
 lcall delay_ms
 
 mov LCD_BUS, #00111000B ;function set
@@ -19,12 +37,35 @@ lcall send_command
 lcall delay_ms
 mov LCD_BUS, #00000110B ;entry mode set
 
-;initialization END, now send J to LCD
-mov LCD_BUS, #'J'
-lcall send_data
-lcall delay_ms
+;END initialization 
+;send 300183
+mov R1, #30H ;start at the location 30H
+setb LCD_RS
+lcall loop
 
-jmp $ ;infinite loop, jmp to yourselve
+send_name:
+clr LCD_RS
+
+mov R1, #37H ;start at the location 37H
+setb LCD_RS
+lcall loop2
+
+loop:
+	mov A, @R1
+	jz send_name
+	lcall send_data
+	inc R1
+	jmp loop
+
+loop2:
+	mov A, @R1
+	jz finish
+	lcall send_data
+	inc R1
+	jmp loop2
+
+finish:
+	jmp $ ;infinite loop, jmp to yourselve
 
 send_command: ;send 1 to LCD_E and then 0
 	setb LCD_E
@@ -32,9 +73,10 @@ send_command: ;send 1 to LCD_E and then 0
 ret
 
 send_data: ;nearly identical to send_command, differs only with RS pin
-	setb LCD_RS	
-	setb LCD_E
+	mov LCD_BUS, A
+	setb LCD_E ;negative edge on E
 	clr LCD_E
+	lcall short_delay
 ret
 
 short_delay: ;short delay (microseconds)
