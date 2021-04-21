@@ -9,24 +9,24 @@ LCD_BUS EQU P1 ;DB pins from P1.0 to P1.7
 clr LCD_RS
 
 ;BEGIN initialization
-lcall delay_ms
+lcall long_delay
 
 mov LCD_BUS, #00111000B ;function set
 lcall send_command
-lcall delay_us
+lcall short_delay
 mov LCD_BUS, #00001110B ;display ON/OFF control
 lcall send_command
-lcall delay_us
+lcall short_delay
 mov LCD_BUS, #00000001B ;display clear
 lcall send_command
-lcall delay_ms
+lcall long_delay
 mov LCD_BUS, #00000110B ;entry mode set
 
 ;END initialization
 ;my name is Jakub so send J to LCD
 mov LCD_BUS, #'J'
 lcall send_data
-lcall delay_ms
+lcall long_delay
 
 jmp $ ;infinite loop, jmp to yourselve
 
@@ -37,7 +37,7 @@ ret
 
 send_data: ;nearly identical to send_command, differs only with RS pin
 	setb LCD_RS	
-	setb LCD_E
+	setb LCD_E ;negative edge on E
 	clr LCD_E
 ret
 
@@ -47,16 +47,16 @@ short_delay: ;short delay (microseconds)
 ret
 
 long_delay: ;long delay (milliseconds)
-	mov A, #15 ;30/2=15ms as the loop takes 2ms
+	mov A, #15 ;we want 30ms
 	lcall delay_ms ;wait
 ret
 
-delay_us: ;one microsecond delay
+delay_us: ;one microsecond delay function
 	mov R0, A
 	djnz R0, $
 ret
 
-delay_ms: ;two millisecond delay
+delay_ms: ;one millisecond delay function
 	;we need two varibles to store numbers, as we are operating on 8 bit nrs
 	mother_var:
 		mov R1, #10

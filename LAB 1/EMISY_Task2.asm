@@ -24,48 +24,48 @@ LCD_BUS EQU P1 ;DB pins from P1.0 to P1.7
 clr LCD_RS
 
 ;BEGIN initialization
-lcall delay_ms
+lcall long_delay
 
 mov LCD_BUS, #00111000B ;function set
 lcall send_command
-lcall delay_us
+lcall short_delay
 mov LCD_BUS, #00001110B ;display ON/OFF control
 lcall send_command
-lcall delay_us
+lcall short_delay
 mov LCD_BUS, #00000001B ;display clear
 lcall send_command
-lcall delay_ms
+lcall long_delay
 mov LCD_BUS, #00000110B ;entry mode set
 
 ;END initialization 
 ;send 300183
 mov R1, #30H ;start at the location 30H
 
-lcall go_to_position5
+lcall go_to_position5 ;go to position 5 in frst line
 lcall short_delay
 
 setb LCD_RS
-lcall loop
+lcall loop ;writing letters 
 
 send_name:
 clr LCD_RS
 
 mov R1, #37H ;start at the location 37H
 
-lcall go_to_position2
+lcall go_to_position2 ;go to position 2 in scnd line
 lcall short_delay
 
 setb LCD_RS
-lcall loop2
+lcall loop2 ;witing letters
 
-loop:
+loop: ;writing index nr
 	mov A, @R1
 	jz send_name
 	lcall send_data
 	inc R1
 	jmp loop
 
-loop2:
+loop2: ;writing name
 	mov A, @R1
 	jz finish
 	lcall send_data
@@ -75,20 +75,16 @@ loop2:
 finish:
 	jmp $ ;infinite loop, jmp to yourselve
 
-go_to_position5:
+go_to_position5: ;go to position 5 in frst line
 	clr LCD_RS
 	mov LCD_BUS, #10000100B 
-
-	setb LCD_E
-	clr LCD_E
+	lcall send_command
 ret
 
-go_to_position2:
+go_to_position2: ;go to position 2 in scnd line
 	clr LCD_RS
 	mov LCD_BUS, #11000001B
-
-	setb LCD_E
-	clr LCD_E
+	lcall send_command
 ret
 
 send_command: ;send 1 to LCD_E and then 0
@@ -109,16 +105,16 @@ short_delay: ;short delay (microseconds)
 ret
 
 long_delay: ;long delay (milliseconds)
-	mov A, #15 ;30/2=15ms as the loop takes 2ms
+	mov A, #30 ;we want 30ms
 	lcall delay_ms ;wait
 ret
 
-delay_us: ;one microsecond delay
+delay_us: ;one microsecond delay function
 	mov R0, A
 	djnz R0, $
 ret
 
-delay_ms: ;two millisecond delay
+delay_ms: ;one millisecond delay function
 	;we need two varibles to store numbers, as we are operating on 8 bit nrs
 	mother_var:
 		mov R1, #10
