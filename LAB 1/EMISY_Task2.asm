@@ -40,6 +40,10 @@ mov LCD_BUS, #00000110B ;entry mode set
 ;END initialization 
 ;send 300183
 mov R1, #30H ;start at the location 30H
+
+lcall go_to_position5
+lcall short_delay
+
 setb LCD_RS
 lcall loop
 
@@ -47,6 +51,10 @@ send_name:
 clr LCD_RS
 
 mov R1, #37H ;start at the location 37H
+
+lcall go_to_position2
+lcall short_delay
+
 setb LCD_RS
 lcall loop2
 
@@ -66,6 +74,22 @@ loop2:
 
 finish:
 	jmp $ ;infinite loop, jmp to yourselve
+
+go_to_position5:
+	clr LCD_RS
+	mov LCD_BUS, #10000100B 
+
+	setb LCD_E
+	clr LCD_E
+ret
+
+go_to_position2:
+	clr LCD_RS
+	mov LCD_BUS, #11000001B
+
+	setb LCD_E
+	clr LCD_E
+ret
 
 send_command: ;send 1 to LCD_E and then 0
 	setb LCD_E
