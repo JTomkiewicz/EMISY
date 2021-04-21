@@ -20,37 +20,36 @@ lcall delay_ms
 mov LCD_BUS, #00000110B ;entry mode set
 
 ;initialization END, now send J to LCD
-
 mov LCD_BUS, #'J'
 lcall send_data
 lcall delay_ms
 
 jmp $ ;infinite loop, jmp to yourselve
 
-send_command:
+send_command: ;send 1 to LCD_E and then 0
 	setb LCD_E
 	clr LCD_E
 ret
-send_data:	;nearly identical to send_command, differs only with RS pin
+
+send_data: ;nearly identical to send_command, differs only with RS pin
 	setb LCD_RS	
 	setb LCD_E
 	clr LCD_E
 ret
 
-short_delay:
-	mov A, #40
-	lcall delay_us
+short_delay: ;short delay (microseconds)
+	mov A, #40 ;we want 40us
+	lcall delay_us ;wait
 ret
 
-long_delay:
+long_delay: ;long delay (milliseconds)
 	mov A, #15 ;30/2=15ms as the loop takes 2ms
-	lcall delay_ms;
+	lcall delay_ms ;wait
 ret
 
-delay_us: ;two microseconds delay
+delay_us: ;one microsecond delay
 	mov R0, A
 	djnz R0, $
-	;end
 ret
 
 delay_ms: ;two millisecond delay
@@ -62,7 +61,6 @@ delay_ms: ;two millisecond delay
 	djnz R2, $ ;decrement child untill 0
 	djnz R1, child_var ;decrement mother
 	djnz R0, mother_var
-	;end
 ret 
 
 
