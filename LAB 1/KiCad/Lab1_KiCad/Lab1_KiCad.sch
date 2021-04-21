@@ -1,0 +1,325 @@
+EESchema Schematic File Version 4
+EELAYER 30 0
+EELAYER END
+$Descr A4 11693 8268
+encoding utf-8
+Sheet 1 1
+Title ""
+Date ""
+Rev ""
+Comp ""
+Comment1 ""
+Comment2 ""
+Comment3 ""
+Comment4 ""
+$EndDescr
+Text Notes 7000 7100 0    79   ~ 0
+Ceated by Jakub Tomkiewicz
+Text Notes 7350 7500 0    79   ~ 0
+EMISY Lab1 schematics 
+$Comp
+L Device:C C3
+U 1 1 608086B7
+P 3650 4900
+F 0 "C3" H 3765 4946 50  0000 L CNN
+F 1 "22pF" H 3765 4855 50  0000 L CNN
+F 2 "" H 3688 4750 50  0001 C CNN
+F 3 "~" H 3650 4900 50  0001 C CNN
+	1    3650 4900
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:C C2
+U 1 1 608095A9
+P 3050 4900
+F 0 "C2" H 3165 4946 50  0000 L CNN
+F 1 "22pF" H 3165 4855 50  0000 L CNN
+F 2 "" H 3088 4750 50  0001 C CNN
+F 3 "~" H 3050 4900 50  0001 C CNN
+	1    3050 4900
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:GND #PWR?
+U 1 1 6080A1B7
+P 3650 5300
+F 0 "#PWR?" H 3650 5050 50  0001 C CNN
+F 1 "GND" H 3655 5127 50  0000 C CNN
+F 2 "" H 3650 5300 50  0001 C CNN
+F 3 "" H 3650 5300 50  0001 C CNN
+	1    3650 5300
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:GND #PWR?
+U 1 1 6080A8FD
+P 3050 5300
+F 0 "#PWR?" H 3050 5050 50  0001 C CNN
+F 1 "GND" H 3055 5127 50  0000 C CNN
+F 2 "" H 3050 5300 50  0001 C CNN
+F 3 "" H 3050 5300 50  0001 C CNN
+	1    3050 5300
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	3650 5050 3650 5300
+Wire Wire Line
+	3050 5050 3050 5300
+$Comp
+L Device:Crystal Y1
+U 1 1 6080C2B4
+P 3350 4350
+F 0 "Y1" H 3350 4618 50  0000 C CNN
+F 1 "12 MHz" H 3350 4527 50  0000 C CNN
+F 2 "" H 3350 4350 50  0001 C CNN
+F 3 "~" H 3350 4350 50  0001 C CNN
+	1    3350 4350
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	3500 4350 3650 4350
+Wire Wire Line
+	3650 4350 3650 4750
+Wire Wire Line
+	3200 4350 3050 4350
+Wire Wire Line
+	3050 4350 3050 4750
+Wire Wire Line
+	4000 3850 3650 3850
+Wire Wire Line
+	3650 3850 3650 4350
+Connection ~ 3650 4350
+Wire Wire Line
+	4000 3650 3050 3650
+Wire Wire Line
+	3050 3650 3050 4350
+Connection ~ 3050 4350
+$Comp
+L power:GND #PWR?
+U 1 1 6080D710
+P 2700 4500
+F 0 "#PWR?" H 2700 4250 50  0001 C CNN
+F 1 "GND" H 2705 4327 50  0000 C CNN
+F 2 "" H 2700 4500 50  0001 C CNN
+F 3 "" H 2700 4500 50  0001 C CNN
+	1    2700 4500
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	4000 3450 2700 3450
+$Comp
+L Device:CP C1
+U 1 1 6080E850
+P 2700 3150
+F 0 "C1" H 2818 3196 50  0000 L CNN
+F 1 "10uF" H 2818 3105 50  0000 L CNN
+F 2 "" H 2738 3000 50  0001 C CNN
+F 3 "~" H 2700 3150 50  0001 C CNN
+	1    2700 3150
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	2700 3300 2700 3450
+Wire Wire Line
+	2700 2800 2700 3000
+$Comp
+L power:+5V #PWR?
+U 1 1 60810916
+P 2700 2800
+F 0 "#PWR?" H 2700 2650 50  0001 C CNN
+F 1 "+5V" H 2715 2973 50  0000 C CNN
+F 2 "" H 2700 2800 50  0001 C CNN
+F 3 "" H 2700 2800 50  0001 C CNN
+	1    2700 2800
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:R R1
+U 1 1 60811F9B
+P 2700 4000
+F 0 "R1" H 2770 4046 50  0000 L CNN
+F 1 "10k" H 2770 3955 50  0000 L CNN
+F 2 "" V 2630 4000 50  0001 C CNN
+F 3 "~" H 2700 4000 50  0001 C CNN
+	1    2700 4000
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	2700 3450 2700 3850
+Connection ~ 2700 3450
+Wire Wire Line
+	2700 4500 2700 4150
+$Comp
+L power:GND #PWR?
+U 1 1 608130E2
+P 4600 5350
+F 0 "#PWR?" H 4600 5100 50  0001 C CNN
+F 1 "GND" H 4605 5177 50  0000 C CNN
+F 2 "" H 4600 5350 50  0001 C CNN
+F 3 "" H 4600 5350 50  0001 C CNN
+	1    4600 5350
+	1    0    0    -1  
+$EndComp
+$Comp
+L MCU_Microchip_8051:AT89C4051-12PU U1
+U 1 1 60805CB8
+P 4600 4250
+F 0 "U1" H 4679 5295 39  0000 L BNN
+F 1 "AT89C4051-12PU" H 4521 5283 39  0000 R BNN
+F 2 "Package_DIP:DIP-20_W7.62mm" H 4600 4250 50  0001 C CIN
+F 3 "http://ww1.microchip.com/downloads/en/DeviceDoc/doc1001.pdf" H 4600 4250 50  0001 C CNN
+	1    4600 4250
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:C C4
+U 1 1 60814669
+P 4350 2850
+F 0 "C4" V 4504 2856 50  0000 C CNN
+F 1 "100nF" V 4229 2923 50  0000 R BNN
+F 2 "" H 4388 2700 50  0001 C CNN
+F 3 "~" H 4350 2850 50  0001 C CNN
+	1    4350 2850
+	0    -1   -1   0   
+$EndComp
+Wire Wire Line
+	4600 2850 4500 2850
+Wire Wire Line
+	4600 2850 4600 3150
+$Comp
+L power:+5V #PWR?
+U 1 1 60815C58
+P 4600 2700
+F 0 "#PWR?" H 4600 2550 50  0001 C CNN
+F 1 "+5V" H 4615 2873 50  0000 C CNN
+F 2 "" H 4600 2700 50  0001 C CNN
+F 3 "" H 4600 2700 50  0001 C CNN
+	1    4600 2700
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	4600 2700 4600 2850
+Connection ~ 4600 2850
+$Comp
+L power:GND #PWR?
+U 1 1 60816CAD
+P 4050 2850
+F 0 "#PWR?" H 4050 2600 50  0001 C CNN
+F 1 "GND" H 4055 2677 50  0000 C CNN
+F 2 "" H 4050 2850 50  0001 C CNN
+F 3 "" H 4050 2850 50  0001 C CNN
+	1    4050 2850
+	0    1    1    0   
+$EndComp
+Wire Wire Line
+	4200 2850 4050 2850
+Wire Wire Line
+	5200 3450 6300 3450
+Wire Wire Line
+	5200 3550 6300 3550
+Wire Wire Line
+	5200 3650 6300 3650
+Wire Wire Line
+	6300 3750 5200 3750
+Wire Wire Line
+	5200 3850 6300 3850
+Wire Wire Line
+	6300 3950 5200 3950
+Wire Wire Line
+	5200 4050 6300 4050
+Wire Wire Line
+	6300 4150 5200 4150
+Wire Wire Line
+	6000 3250 6300 3250
+Text Notes 5700 3300 0    50   ~ 0
+LCD_RS
+$Comp
+L power:GND #PWR?
+U 1 1 608220D9
+P 6300 3150
+F 0 "#PWR?" H 6300 2900 50  0001 C CNN
+F 1 "GND" H 6305 2977 50  0000 C CNN
+F 2 "" H 6300 3150 50  0001 C CNN
+F 3 "" H 6300 3150 50  0001 C CNN
+	1    6300 3150
+	0    1    1    0   
+$EndComp
+Wire Wire Line
+	6300 2950 6000 2950
+Text Notes 5650 2950 0    50   ~ 0
+LCD_E
+$Comp
+L Device:C C5
+U 1 1 6082858B
+P 6350 2550
+F 0 "C5" V 6465 2478 50  0000 L CNN
+F 1 "100nF" V 6190 2465 50  0000 L CNN
+F 2 "" H 6388 2400 50  0001 C CNN
+F 3 "~" H 6350 2550 50  0001 C CNN
+	1    6350 2550
+	0    -1   -1   0   
+$EndComp
+Wire Wire Line
+	6700 2750 6700 2550
+Wire Wire Line
+	6700 2550 6500 2550
+$Comp
+L power:GND #PWR?
+U 1 1 60829A2E
+P 6000 2550
+F 0 "#PWR?" H 6000 2300 50  0001 C CNN
+F 1 "GND" H 6005 2377 50  0000 C CNN
+F 2 "" H 6000 2550 50  0001 C CNN
+F 3 "" H 6000 2550 50  0001 C CNN
+	1    6000 2550
+	0    1    1    0   
+$EndComp
+Wire Wire Line
+	6000 2550 6200 2550
+$Comp
+L power:+5V #PWR?
+U 1 1 6082C74B
+P 6700 2350
+F 0 "#PWR?" H 6700 2200 50  0001 C CNN
+F 1 "+5V" H 6715 2523 50  0000 C CNN
+F 2 "" H 6700 2350 50  0001 C CNN
+F 3 "" H 6700 2350 50  0001 C CNN
+	1    6700 2350
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	6700 2350 6700 2550
+Connection ~ 6700 2550
+$Comp
+L Display_Character:HY1602E DS1
+U 1 1 608184E6
+P 6700 3550
+F 0 "DS1" H 6582 4334 50  0000 C CNN
+F 1 "HY1602E" H 6897 4322 50  0000 C CNN
+F 2 "Display:HY1602E" H 6700 2650 50  0001 C CIN
+F 3 "http://www.icbank.com/data/ICBShop/board/HY1602E.pdf" H 6900 3650 50  0001 C CNN
+	1    6700 3550
+	1    0    0    -1  
+$EndComp
+Wire Notes Line
+	7100 3000 7500 3000
+Wire Notes Line
+	7500 3000 7500 2900
+Wire Notes Line
+	7500 2900 7100 2900
+Wire Notes Line
+	7100 2900 7100 3000
+Text Notes 7100 3000 0    35   ~ 0
+Potentiometer
+$Comp
+L power:GND #PWR?
+U 1 1 608300A8
+P 6700 4350
+F 0 "#PWR?" H 6700 4100 50  0001 C CNN
+F 1 "GND" H 6705 4177 50  0000 C CNN
+F 2 "" H 6700 4350 50  0001 C CNN
+F 3 "" H 6700 4350 50  0001 C CNN
+	1    6700 4350
+	1    0    0    -1  
+$EndComp
+$EndSCHEMATC
