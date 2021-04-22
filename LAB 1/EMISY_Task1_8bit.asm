@@ -47,7 +47,7 @@ short_delay: ;short delay (microseconds)
 ret
 
 long_delay: ;long delay (milliseconds)
-	mov A, #15 ;we want 30ms
+	mov A, #30 ;we want 30ms
 	lcall delay_ms ;wait
 ret
 
