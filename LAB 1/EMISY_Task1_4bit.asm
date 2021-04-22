@@ -42,17 +42,11 @@ mov LCD_BUS, #01100000B
 
 ;END initialization
 ;my name is Jakub so send J to LCD
-mov LCD_BUS, #'J'
+mov LCD_BUS, #01000000B
 lcall send_data
 lcall long_delay
-mov A, #'J'
 
-;shift 4 newest bits to 4 oldest
-rl A
-rl A
-rl A
-rl A
-mov LCD_BUS, A
+mov LCD_BUS, #10100000B
 lcall send_data
 lcall long_delay
 
