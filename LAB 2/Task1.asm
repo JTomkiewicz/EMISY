@@ -8,8 +8,8 @@ DECO_A EQU P3 ;decoder A0 and A1 pins connected to P3.3 and P3.4
 ;send 1s to display to make it clear -> nothing on display
 mov LETTER_BUS, #11111111B
 
-;according to recorded kitchen clock we want digit 3 on the display nr3
-mov R0, #00010000B ;we are working on display nr3
+;according to recorded kitchen clock we want digit 3 on the display nr2
+mov R0, #00010000B ;we are working on display nr2
 mov R1, #10110000B ;and sending letter 3 so abcdg needs to light
 
 lcall riseAndShine ;func to show letter on display 

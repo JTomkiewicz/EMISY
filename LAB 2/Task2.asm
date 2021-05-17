@@ -14,7 +14,7 @@ jmp configurationFirst
 org 0BH ;instructions should be written in memory starting from given address
 
 clr DECO_CS ;decoder OFF
-mov DECO_A, #00010000B ;we are working on display nr3
+mov DECO_A, #00010000B ;we are working on display nr2
 xrl LETTER_BUS, #10000000B ;blink is done with help of xor  
 setb DECO_CS ;decoder ON
 
