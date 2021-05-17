@@ -22,6 +22,66 @@ jb ACC.1, DISPLAY1
 jb ACC.2, DISPLAY2
 jb ACC.3, DISPLAY3
 
+;display 3
+DISPLAY0:
+    mov R0, #00000010B
+
+    mov R1, #00000000B ;we are working on display nr0
+    mov R2, #10110000B ;and sending letter 3 so abcdg needs to light
+
+    lcall riseAndShine ;func to show letter on display 
+
+    mov TH0, #0D8H ;high part
+    mov TL0, #0F0H ;low part
+reti
+
+;display 8
+DISPLAY1:
+    mov R0, #00000100B
+
+    mov R1, #00001000B ;we are working on display nr1
+    mov R2, #10000000B ;and sending letter 8
+
+    lcall riseAndShine ;func to show letter on display 
+
+    mov TH0, #0D8H ;high part
+    mov TL0, #0F0H ;low part
+reti
+
+;display 1
+DISPLAY2:
+    mov R0, #00001000B
+
+    mov R1, #00110000B ;we are working on display nr2
+    mov R2, #11111001B ;and sending letter 1
+
+    lcall riseAndShine ;func to show letter on display
+
+    mov TH0, #0D8H ;high part
+    mov TL0, #0F0H ;low part 
+reti
+
+;display 0
+DISPLAY3:
+    mov R0, #00010000B
+
+    mov R1, #00011000B ;we are working on display nr3
+    mov R2, #11000000B ;and sending letter 0
+
+    lcall riseAndShine ;func to show letter on display 
+
+    mov TH0, #0D8H ;high part
+    mov TL0, #0F0H ;low part
+reti
+
+;subroutine to light selected display parts on chosen display
+riseAndShine:
+    clr DECO_CS ;decoder OFF
+    mov DECO_A, R1 ;chose on decoder display to work on
+    mov LETTER_BUS, R2 ;chosen parts of the display to light
+    setb DECO_CS ;decoder ON
+ret
+
 ;subroutine to configure T0
 configurationFirst:
     setb TR0 ;T0 must be turned ON
