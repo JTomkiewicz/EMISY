@@ -24,7 +24,7 @@ jb ACC.3, DISPLAY3
 
 ;letter 3 on display 0 
 DISPLAY0:
-    mov R0, #00000010B ;ID of display0
+    mov R0, #00000010B ;ID of display 1
 
     mov R1, #00000000B ;we are working on display nr0
     mov R2, #10110000B ;and sending letter 3 so abcdg needs to light
@@ -37,7 +37,7 @@ reti
 
 ;letter 8 on display 1
 DISPLAY1:
-    mov R0, #00000100B ;ID of display1
+    mov R0, #00000100B ;ID of display 2
 
     mov R1, #00001000B ;we are working on display nr1
     mov R2, #10000000B ;and sending letter 8
@@ -50,7 +50,7 @@ reti
 
 ;letter 1 on display 2
 DISPLAY2:
-    mov R0, #00001000B ;ID of display2
+    mov R0, #00001000B ;ID of display 3
 
     mov R1, #00110000B ;we are working on display nr2
     mov R2, #11111001B ;and sending letter 1
@@ -63,7 +63,7 @@ reti
 
 ;letter 0 on display 3
 DISPLAY3:
-    mov R0, #00010000B ;ID of display3
+    mov R0, #00000001B ;ID of display 0
 
     mov R1, #00011000B ;we are working on display nr3
     mov R2, #11000000B ;and sending letter 0
