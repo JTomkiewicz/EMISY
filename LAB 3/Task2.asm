@@ -2,18 +2,16 @@
 
 ;labels definitions
 LED_BUS EQU P1 ;pins from P1.0 to P1.7
-INT1 EQU P3.3 ;INT1 external interrupt
 KBRD_BUS EQU P0 ;keyboard bus pins from P0.0 to P0.7
 
-mov KBRD_BUS, #11110000B
+mov KBRD_BUS, #11110000B ;4 bits are row pins, 3 bits are column pins, 1 is not used 
 
 ;jump to configuration
 jmp configurationFirst
 
 org 013H ;INT1 external interrupt
 
-xrl LED_BUS, #11111111B
-jnb INT1, $
+xrl LED_BUS, #11111111B ;all LEDS ON or OFF
 
 reti ;return interrupt subroutine
 
