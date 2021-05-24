@@ -8,7 +8,7 @@ mov 31H, #'A'
 mov 32H, #'K'
 mov 33H, #'U'
 mov 34H, #'B'
-mov 35H, #0 ;end of first line
+mov 35H, #0 ;end of data
 
 ;labels definitions
 LCD_RS EQU P3.0 ;RS pin
@@ -35,7 +35,7 @@ mov LCD_BUS, #00000110B ;entry mode set
 ;END initialization 
 
 begin:
-    jb SW0, begin ;only when btn pressed go forward in code
+    jb SW0, begin ;when btn pressed go forward in code
     
     ;send JAKUB
     mov R1, #30H ;start at the location 30H
@@ -45,14 +45,15 @@ begin:
     lcall loop ;writing letters 
 
 finish:
-	jnb SW0, finish
-    clr LCD_RS
-    mov LCD_BUS, #00000001B ;when btn not pressed clear display
+	jnb SW0, finish ;when btn released go forward in code
+    clr LCD_RS ;clr earlier raised RS 
+    mov LCD_BUS, #00000001B ;clear display
     lcall send_command
+    lcall short_delay ;short delay (without it code works, but clicking btn fast might cause error)
 
-    jmp begin
+    jmp begin ;go to begining to wait for btn pressed
 
-loop: ;writing name
+loop: ;writing name (JAKUB)
 	mov A, @R1
 	jz finish
 	lcall send_data
