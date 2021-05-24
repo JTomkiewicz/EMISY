@@ -3,19 +3,12 @@
 ;this code is basically copied from my fist laboratory, only small changes are made to fit lab3 instructions
 
 ;put data in RAM
-mov 30H, #'3'
-mov 31H, #'0'
-mov 32H, #'0'
-mov 33H, #'1'
-mov 34H, #'8'
-mov 35H, #'3'
-mov 36H, #0 ;end of first line
-mov 37H, #'J'
-mov 38H, #'A'
-mov 39H, #'K'
-mov 3AH, #'U'
-mov 3BH, #'B'
-mov 3CH, #0 ;end of line
+mov 30H, #'J'
+mov 31H, #'A'
+mov 32H, #'K'
+mov 33H, #'U'
+mov 34H, #'B'
+mov 35H, #0 ;end of first line
 
 ;labels definitions
 LCD_RS EQU P3.0 ;RS pin
@@ -43,51 +36,20 @@ mov LCD_BUS, #00000110B ;entry mode set
 ;send 300183
 mov R1, #30H ;start at the location 30H
 
-lcall go_to_position5 ;go to position 5 in frst line
 lcall short_delay
 
 setb LCD_RS
 lcall loop ;writing letters 
 
-send_name:
-clr LCD_RS
-
-mov R1, #37H ;start at the location 37H
-
-lcall go_to_position2 ;go to position 2 in scnd line
-lcall short_delay
-
-setb LCD_RS
-lcall loop2 ;witing letters
-
 loop: ;writing index nr
-	mov A, @R1
-	jz send_name
-	lcall send_data
-	inc R1
-	jmp loop
-
-loop2: ;writing name
 	mov A, @R1
 	jz finish
 	lcall send_data
 	inc R1
-	jmp loop2
+	jmp loop
 
 finish:
 	jmp $ ;infinite loop, jmp to yourselve
-
-go_to_position5: ;go to position 5 in frst line
-	clr LCD_RS
-	mov LCD_BUS, #10000100B 
-	lcall send_command
-ret
-
-go_to_position2: ;go to position 2 in scnd line
-	clr LCD_RS
-	mov LCD_BUS, #11000001B
-	lcall send_command
-ret
 
 send_command: ;send 1 to LCD_E and then 0
 	setb LCD_E
