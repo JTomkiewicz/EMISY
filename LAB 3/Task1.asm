@@ -14,6 +14,7 @@ mov 35H, #0 ;end of first line
 LCD_RS EQU P3.0 ;RS pin
 LCD_E EQU P3.1 ;E pin
 LCD_BUS EQU P1 ;DB pins from P1.0 to P1.7
+SW0 EQU P2.0 ;switch 0
 
 ;send 0 to LCD_RS
 clr LCD_RS
@@ -31,25 +32,32 @@ mov LCD_BUS, #00000001B ;display clear
 lcall send_command
 lcall long_delay
 mov LCD_BUS, #00000110B ;entry mode set
-
 ;END initialization 
-;send 300183
-mov R1, #30H ;start at the location 30H
 
-lcall short_delay
+begin:
+    jb SW0, begin ;only when btn pressed go forward in code
+    
+    ;send JAKUB
+    mov R1, #30H ;start at the location 30H
 
-setb LCD_RS
-lcall loop ;writing letters 
+    lcall short_delay
+    setb LCD_RS
+    lcall loop ;writing letters 
 
-loop: ;writing index nr
+finish:
+	jnb SW0, finish
+    clr LCD_RS
+    mov LCD_BUS, #00000001B ;when btn not pressed clear display
+    lcall send_command
+
+    jmp begin
+
+loop: ;writing name
 	mov A, @R1
 	jz finish
 	lcall send_data
 	inc R1
 	jmp loop
-
-finish:
-	jmp $ ;infinite loop, jmp to yourselve
 
 send_command: ;send 1 to LCD_E and then 0
 	setb LCD_E
