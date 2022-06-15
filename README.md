@@ -1,17 +1,11 @@
-# Microprocessor Systems
+# Description
 
-## Description:
+We learned about efficient methods of microprocessor systems design and debugging. Topics such as 3-bus architecture, main blocks and interrupts. 
 
-Course presents efficient methods of microprocessor systems design and debugging. Introduction to the subject tells about 3-bus architecture, main blocks (CPU, ROM, RAM, IO) and interrupts. The main part is about mothods of microprocessor systems design illustrated with standard solutions (interfacing of common microprocessor systems components).
+The main part is about methods of microprocessor systems design illustrated with standard solutions.
 
-## Laboratory 1
+# Laboratories
 
-Turning on proper LED segments in LED display.
-
-## Laboratory 2
-
-Timer() configuration.
-
-## Laboratory 3
-
-Timer() and LED displays - multiplexing animations.
+- Lab #1 - Turning on proper LED segments in LED display
+- Lab #2 - Timer() configuration
+- Lab #3 - Timer() and LED displays
